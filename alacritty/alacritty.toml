@@ -1,0 +1,19 @@
+
+[env]
+TERM = "alacritty"
+
+[window]
+dynamic_padding = false
+opacity = 0.85
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 6
+y = 6
+
+[general]
+import = ["/home/acph/.config/alacritty/themes/themes/horizon-dark.toml"]

@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Easy and convenient way to make screenshots with only one line :P
+#
+# Dependencies:
+#    - maim
+#    - xclip
+
+
+maim -u -s | xclip -selection clipboard -t image/png
