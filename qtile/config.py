@@ -104,10 +104,12 @@ keys = [
     Key([mod, "shift"], "p", lazy.spawn("/home/acph/.config/qtile/i3lock_run.sh"), desc="Lock screen!!! :P"),
     Key([mod], "s", lazy.spawn("flameshot gui"), desc="Screenshot"),
     Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "m", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",
-    ),
+    Key([mod], "m", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
+    Key(['mod1'], "Tab", lazy.next_screen(), desc="Select next screen"),
 
 ]
+
+
 
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started
@@ -247,6 +249,19 @@ screens = [
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
         # x11_drag_polling_rate = 60,
+    ),
+    Screen(
+        top=bar.Bar([
+            widget.GroupBox(),
+            widget.TaskList(margin=1),
+            ],
+            24,
+            background='2b2e4b',
+            border_width=[2]*4, # , 3, 3, 3],  # Draw top and bottom borders
+            border_color=["4682b4"]*4, #, "ff00ff", "ff00ff", "ff00ff"]  # Borders are magenta
+            margin=3,
+            opacity=0.8,
+),
     ),
 ]
 
