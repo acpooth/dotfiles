@@ -30,7 +30,9 @@
 # .config/qtile/autostart.sh # must ve excecutable
 # i3lock
 # flameshot
-#
+# easyeffects
+# htop
+# ollama --- phi4 model
 
 #
 import subprocess
@@ -88,6 +90,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "space", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod, "shift"], "space", lazy.prev_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key(
         [mod],
@@ -100,8 +103,12 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     ### acph
-    Key([mod], "l", lazy.spawn("i3lock"), desc="Lock screen!!! :P"),
+    Key([mod, "shift"], "p", lazy.spawn("i3lock"), desc="Lock screen!!! :P"),
     Key([mod], "s", lazy.spawn("flameshot gui"), desc="Screenshot"),
+    Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "m", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",
+    ),
+
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -150,18 +157,22 @@ groups.append(ScratchPad('scratchpad', [
     DropDown('term', 'alacritty', widht=0.1,  x=0.1, y=0),
     DropDown('effects', 'easyeffects'),
     DropDown('scratch', 'alacritty -e emacs -Q -nw'),
+    DropDown('htop', 'alacritty -e htop'),
+    DropDown('ollama', 'alacritty -e ollama run phi4'), # needs ollama and phi4
 ]))
 
 keys.extend([
     Key([mod, 'control'], "1", lazy.group['scratchpad'].dropdown_toggle('term')),
     Key([mod, 'control'], "2", lazy.group['scratchpad'].dropdown_toggle('effects')),
     Key([mod], "e", lazy.group['scratchpad'].dropdown_toggle('scratch')),
+    Key([mod, "control"], "3", lazy.group['scratchpad'].dropdown_toggle('htop')),
+    Key([mod], "o", lazy.group['scratchpad'].dropdown_toggle('ollama')),
 ])
 
 layouts = [
     layout.Columns(border_focus='3a9d23',
                    border_focus_stack=["#d75f5f", "#8f3d3d"],
-                   border_width=4
+                   border_width=2
                    ),
     # layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -187,9 +198,9 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        # bottom=bar.Gap(5),
-        # left=bar.Gap(5),
-        # right=bar.Gap(5),
+        bottom=bar.Gap(5),
+        left=bar.Gap(5),
+        right=bar.Gap(5),
         top=bar.Bar(
             [
                 # widget.CurrentLayout(),
@@ -252,7 +263,7 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
-floats_kept_above = True
+floats_kept_above = False # floats can be back
 cursor_warp = False
 floating_layout = layout.Floating(
     float_rules=[

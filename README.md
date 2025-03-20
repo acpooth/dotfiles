@@ -18,12 +18,15 @@ Mis archivos de configuración....  recorta y pega :P
 #### Otras dependencias:
 - xclip
 - maim
+- i3lock
+- htop
 
 #### Programas usados en configuraciones.
 - flameshot
 - dropbox
 - setxkbmap (x11)
-
+- easyeffects
+- ollama (modelo actual: phi4)
 
 ## Credits
 
