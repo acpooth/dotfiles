@@ -31,8 +31,6 @@
 # i3lock
 # flameshot
 # easyeffects
-# htop
-# ollama --- phi4 model
 
 #
 import subprocess
@@ -103,7 +101,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     ### acph
-    Key([mod, "shift"], "p", lazy.spawn("i3lock"), desc="Lock screen!!! :P"),
+    Key([mod, "shift"], "p", lazy.spawn("/home/acph/.config/qtile/i3lock_run.sh"), desc="Lock screen!!! :P"),
     Key([mod], "s", lazy.spawn("flameshot gui"), desc="Screenshot"),
     Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "m", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",
