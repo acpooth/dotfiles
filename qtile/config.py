@@ -60,6 +60,7 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    # Key([mod], "Tab", lazy.layout.next(), desc="Move window focus to other window"),
     Key([mod], "Tab", lazy.layout.next(), desc="Move window focus to other window"),
     Key([mod, 'shift'], "Tab", lazy.layout.previous(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
@@ -154,18 +155,18 @@ for i in groups:
 
 
 groups.append(ScratchPad('scratchpad', [
-    DropDown('term', 'alacritty', widht=0.1,  x=0.1, y=0),
+    DropDown('term', 'alacritty', width=0.8,  x=0.1, y=0),
     DropDown('effects', 'easyeffects'),
-    DropDown('scratch', 'alacritty -e emacs -Q -nw'),
-    DropDown('htop', 'alacritty -e htop'),
-    DropDown('ollama', 'alacritty -e ollama run phi4'), # needs ollama and phi4
+    DropDown('scratch', 'alacritty -e emacs -Q -nw', width=0.8, height=0.5,  x=0.1, y=0),
+    DropDown('htop', 'alacritty -e htop', width=0.8, height=0.5, x=0.1, y=0.5),
+    DropDown('ollama', 'alacritty -e ollama run phi4', width=0.3, height=1, x=0.7, y=0), # needs ollama and phi4
 ]))
 
 keys.extend([
-    Key([mod, 'control'], "1", lazy.group['scratchpad'].dropdown_toggle('term')),
-    Key([mod, 'control'], "2", lazy.group['scratchpad'].dropdown_toggle('effects')),
+    Key([mod, 'control'], "0", lazy.group['scratchpad'].dropdown_toggle('term')),
+    Key([mod, 'control'], "8", lazy.group['scratchpad'].dropdown_toggle('effects')),
     Key([mod], "e", lazy.group['scratchpad'].dropdown_toggle('scratch')),
-    Key([mod, "control"], "3", lazy.group['scratchpad'].dropdown_toggle('htop')),
+    Key([mod, "control"], "9", lazy.group['scratchpad'].dropdown_toggle('htop')),
     Key([mod], "o", lazy.group['scratchpad'].dropdown_toggle('ollama')),
 ])
 
@@ -184,7 +185,7 @@ layouts = [
     # layout.RatioTile(),
     # layout.Tile(),
     layout.TreeTab(border_focus='3a9d23'),
-    layout.Floating(),
+    # layout.Floating(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
@@ -194,6 +195,7 @@ widget_defaults = dict(
     fontsize=12,
     padding=3,
 )
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
@@ -223,7 +225,6 @@ screens = [
                 # widget.Battery(),
                 # widget.BatteryIcon(),
                 # widget.Backlight(),
-
                 widget.Pomodoro(),
                 widget.Sep(padding=10, linewidth=3, size_percent=50, foreground='3a9d23'),
                 widget.ThermalSensor(),
@@ -252,6 +253,7 @@ screens = [
     ),
     Screen(
         top=bar.Bar([
+            widget.CurrentLayoutIcon(),
             widget.GroupBox(),
             widget.TaskList(margin=1),
             ],
@@ -261,7 +263,7 @@ screens = [
             border_color=["4682b4"]*4, #, "ff00ff", "ff00ff", "ff00ff"]  # Borders are magenta
             margin=3,
             opacity=0.8,
-),
+                    ),
     ),
 ]
 
@@ -275,8 +277,8 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
-bring_front_click = False
-floats_kept_above = False # floats can be back
+bring_front_click = True # modified
+floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
     float_rules=[

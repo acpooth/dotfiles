@@ -14,19 +14,20 @@ Mis archivos de configuración....  recorta y pega :P
 - picom
 - qtile
 
+#### Programas usados en configuraciones.
+- htop
+- i3lock
+- flameshot
+- dropbox
+- syncthing
+- setxkbmap (x11)
+- easyeffects
+- ollama (modelo actual: phi4)
 
 #### Otras dependencias:
 - xclip
 - maim
-- i3lock
-- htop
 
-#### Programas usados en configuraciones.
-- flameshot
-- dropbox
-- setxkbmap (x11)
-- easyeffects
-- ollama (modelo actual: phi4)
 
 ## Credits
 
