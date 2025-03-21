@@ -13,6 +13,7 @@ Mis archivos de configuración....  recorta y pega :P
 - kupfer
 - picom
 - qtile
+- NumixCircle 
 
 #### Programas usados en configuraciones.
 - htop

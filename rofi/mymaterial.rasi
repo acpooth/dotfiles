@@ -1,0 +1,161 @@
+/*
+ * ROFI color theme
+ *
+ * Based on Base16 Material Color Scheme (https://github.com/ntpeters/base16-materialtheme-scheme)
+ *
+ * Modified by: Dave Davenport
+ * User: Tomaszal
+ * Copyright: Tomas Zaluckij
+ */
+
+* {
+
+	base00: #263238;
+	base01: #2E3C43;
+	base02: #314549;
+	base03: #546E7A;
+	base04: #B2CCD6;
+	base05: #EEFFFF;
+	base06: #EEFFFF;
+	base07: #FFFFFF;
+	base08: #F07178;
+	base09: #F78C6C;
+	base0A: #FFCB6B;
+	base0B: #C3E88D;
+	base0C: #89DDFF;
+	base0D: #82AAFF;
+	base0E: #C792EA;
+	base0F: #FF5370;
+
+	/*base0D: #00BCD4;*/
+
+	spacing: 0;
+	background-color: transparent;
+
+      bg0    : #1f1f1f80;
+      bg1    : #202020bf;
+      bg2    : #2c2c2c;
+      bg3    : #393939bf;
+      fg0    : #ffffff;
+      fg1    : #cecece;
+    accent : #60cdff;
+    urgent : @accent;
+
+
+}
+
+window {
+	transparency: "real";
+	background-color: #263238CC; /*base00 + CC (80% opacity)*/
+    height   : 600px;
+    width    : 600px;
+}
+
+mainbox {
+	children: [inputbar, message, mode-switcher, listview];
+	spacing: 20px;
+	padding: 20px 0;
+	border: 2px;
+	border-color: @base0D;
+}
+
+inputbar {
+	padding: 0 30px;
+	children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+prompt {
+	text-color: @base0D;
+}
+
+textbox-prompt-colon {
+	expand: false;
+	str: ":";
+	margin: 0 1ch 0 0;
+	text-color: @base0D;
+}
+
+entry {
+	text-color: @base07;
+}
+
+case-indicator {
+	text-color: @base0F;
+}
+
+mode-switcher, message {
+	border: 2px 0;
+	border-color: @base0D;
+}
+
+button, textbox {
+	background-color: @base03;
+	text-color: @base07;
+	padding: 5px;
+}
+
+button selected {
+	background-color: @base0D;
+}
+
+listview {
+    columns       : 5;
+    spacing       : 8px;
+	scrollbar: true;
+	margin: 0 10px 0 15px;
+    fixed-height  : true;
+    fixed-columns : true;
+}
+
+
+scrollbar {
+	background-color: @base03;
+	handle-color: @base0D;
+	handle-width: 10px;
+	border: 0 1px;
+	border-color: @base0D;
+	margin: 0 0 0 20px;
+}
+
+
+element {
+  orientation   : vertical;
+  spacing       : 4px;
+  padding       : 8px;
+  border-radius : 2px;
+  text-color    : #85c1e9;
+
+}
+
+element normal urgent {
+  text-color: @urgent;
+}
+
+element normal active {
+  text-color: @accent;
+}
+
+element alternate active {
+  text-color: @accent;
+}
+
+element selected active {
+  text-color: @accent;
+}
+
+element selected {
+  background-color: @bg3;
+}
+
+element selected urgent {
+  background-color: @urgent;
+}
+
+element-icon {
+  size: 2em;
+}
+
+element-text {
+  text-color       : inherit;
+  horizontal-align : 0.5;
+}
