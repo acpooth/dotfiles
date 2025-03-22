@@ -31,6 +31,7 @@
 # i3lock
 # flameshot
 # easyeffects
+# rofi
 
 #
 import subprocess
@@ -49,8 +50,13 @@ def autostart():
     subprocess.run([home], shell=True)
 
 
+# custom variables
+home = os.path.expanduser('~')
+wallpaper = home+'/.wallpaper'
+llm = 'phi4'
+#
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "alacritty"  # guess_terminal()
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -102,15 +108,14 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     ### acph
-    Key([mod, "shift"], "p", lazy.spawn("/home/acph/.config/qtile/i3lock_run.sh"), desc="Lock screen!!! :P"),
+    Key([mod, "shift"], "p", lazy.spawn(home+"/.config/qtile/i3lock_run.sh"), desc="Lock screen!!! :P"),
     Key([mod], "s", lazy.spawn("flameshot gui"), desc="Screenshot"),
     Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "m", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
     Key(['mod1'], "Tab", lazy.next_screen(), desc="Select next screen"),
+    Key(['shift'], "space", lazy.spawn("rofi -show drun"), desc="rofi"),
 
 ]
-
-
 
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started
@@ -155,15 +160,15 @@ for i in groups:
 
 
 groups.append(ScratchPad('scratchpad', [
-    DropDown('term', 'alacritty', width=0.8,  x=0.1, y=0),
+    DropDown('term', terminal, width=0.8,  x=0.1, y=0),
     DropDown('effects', 'easyeffects'),
-    DropDown('scratch', 'alacritty -e emacs -Q -nw', width=0.8, height=0.5,  x=0.1, y=0),
-    DropDown('htop', 'alacritty -e htop', width=0.8, height=0.5, x=0.1, y=0.5),
-    DropDown('ollama', 'alacritty -e ollama run phi4', width=0.3, height=1, x=0.7, y=0), # needs ollama and phi4
+    DropDown('scratch', f'{terminal} -e emacs -Q -nw', width=0.8, height=0.5,  x=0.1, y=0),
+    DropDown('htop', f'{terminal} -e htop', width=0.8, height=0.5, x=0.1, y=0.5),
+    DropDown('ollama', f'{terminal} -e ollama run {llm}', width=0.3, height=1, x=0.7, y=0), # needs ollama and phi4
 ]))
 
 keys.extend([
-    Key([mod, 'control'], "0", lazy.group['scratchpad'].dropdown_toggle('term')),
+    Key([mod], "0", lazy.group['scratchpad'].dropdown_toggle('term')),
     Key([mod, 'control'], "8", lazy.group['scratchpad'].dropdown_toggle('effects')),
     Key([mod], "e", lazy.group['scratchpad'].dropdown_toggle('scratch')),
     Key([mod, "control"], "9", lazy.group['scratchpad'].dropdown_toggle('htop')),
@@ -237,7 +242,7 @@ screens = [
                 widget.Sep(padding=10, linewidth=3, size_percent=50, foreground='3a9d23'),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
-                widget.Wallpaper(wallpaper="/home/acph/.wallpaper", fmt=''),
+                widget.Wallpaper(wallpaper=wallpaper, fmt=''),
             ],
             24,
             background='2b2e4b',

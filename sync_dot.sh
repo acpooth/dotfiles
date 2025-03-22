@@ -8,6 +8,7 @@ folders=(
     "kupfer"
     "picom"
     "qtile"
+    "rofi"
 )
 
 # Directory where you want to create these themes

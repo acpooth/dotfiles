@@ -4,7 +4,7 @@
 # Autostart programs for qtile #
 ################################
 
-kupfer &
+# kupfer &
 dropbox start &
 setxkbmap -layout us -variant altgr-intl -option ctrl:nocaps &
 # xcompmgr -cf -D 5 &

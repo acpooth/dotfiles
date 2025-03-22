@@ -10,7 +10,9 @@ Mis archivos de configuración....  recorta y pega :P
   - doom
 - alacritty
 - awesome
-- kupfer
+- launcher:
+  - [] kupfer
+  - [x] rofi
 - picom
 - qtile
 - NumixCircle 
@@ -24,6 +26,7 @@ Mis archivos de configuración....  recorta y pega :P
 - setxkbmap (x11)
 - easyeffects
 - ollama (modelo actual: phi4)
+- FiraCode fuente
 
 #### Otras dependencias:
 - xclip
