@@ -34,8 +34,9 @@
 
       bg0    : #1f1f1f80;
       bg1    : #202020bf;
-      bg2    : #2c2c2c;
-      bg3    : #393939bf;
+      bg2    : #393939bf;
+      bg3    : #264d73bf;
+
       fg0    : #ffffff;
       fg1    : #cecece;
     accent : #60cdff;
