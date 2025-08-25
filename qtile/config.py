@@ -31,7 +31,6 @@
 # i3lock
 # flameshot
 # easyeffects
-# rofi
 
 #
 import subprocess
@@ -53,7 +52,7 @@ def autostart():
 # custom variables
 home = os.path.expanduser('~')
 wallpaper = home+'/.wallpaper'
-llm = 'phi4'
+llm = 'qwen3:30b-a3b'
 #
 mod = "mod4"
 terminal = "alacritty"  # guess_terminal()
@@ -164,7 +163,8 @@ groups.append(ScratchPad('scratchpad', [
     DropDown('effects', 'easyeffects'),
     DropDown('scratch', f'{terminal} -e emacs -Q -nw', width=0.8, height=0.5,  x=0.1, y=0),
     DropDown('htop', f'{terminal} -e htop', width=0.8, height=0.5, x=0.1, y=0.5),
-    DropDown('ollama', f'{terminal} -e ollama run {llm}', width=0.3, height=1, x=0.7, y=0), # needs ollama and phi4
+    # DropDown('ollama', f'{terminal} -e ollama run {llm}', width=0.3, height=1, x=0.7, y=0), # needs ollama and phi4
+    DropDown('openwebui', 'google-chrome-stable --app=http://localhost:8080/', width=0.3, height=1, x=0.7, y=0),
 ]))
 
 keys.extend([
@@ -172,7 +172,8 @@ keys.extend([
     Key([mod, 'control'], "8", lazy.group['scratchpad'].dropdown_toggle('effects')),
     Key([mod], "e", lazy.group['scratchpad'].dropdown_toggle('scratch')),
     Key([mod, "control"], "9", lazy.group['scratchpad'].dropdown_toggle('htop')),
-    Key([mod], "o", lazy.group['scratchpad'].dropdown_toggle('ollama')),
+    # Key([mod], "o", lazy.group['scratchpad'].dropdown_toggle('ollama')),
+    Key([mod], "o", lazy.group['scratchpad'].dropdown_toggle('openwebui')),
 ])
 
 layouts = [
@@ -210,8 +211,8 @@ screens = [
         right=bar.Gap(5),
         top=bar.Bar(
             [
-                # widget.CurrentLayout(),
-                widget.CurrentLayoutIcon(),
+                widget.CurrentLayout(),
+                # widget.CurrentLayoutIcon(),
                 widget.GroupBox(),
                 widget.Prompt(),
                 # widget.WindowName(),
@@ -258,7 +259,8 @@ screens = [
     ),
     Screen(
         top=bar.Bar([
-            widget.CurrentLayoutIcon(),
+            # widget.CurrentLayoutIcon(),
+            widget.CurrentLayout(),
             widget.GroupBox(),
             widget.TaskList(margin=1),
             ],

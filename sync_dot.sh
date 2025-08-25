@@ -9,6 +9,8 @@ folders=(
     "picom"
     "qtile"
     "rofi"
+    "hypr"
+    "fish"
 )
 
 # Directory where you want to create these themes

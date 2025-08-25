@@ -96,7 +96,7 @@
  (require 'llm-ollama)
  (setopt ellama-provider
          (make-llm-ollama
-                :chat-model "llama3"
+                :chat-model "gemma3:12b"
                 )
          )
  )
