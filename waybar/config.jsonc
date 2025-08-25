@@ -30,19 +30,19 @@
   "format": "<span color='#00FFFF'>  </span>",
   "on-click": "hyprlock",
   "tooltip": true,
-  "tooltip-format": "锁屏"
+  "tooltip-format": "Lock screen!"
   },
   "custom/reboot": {
     "format": "<span color='#FFD700'>  </span>",
     "on-click": "systemctl reboot",
     "tooltip": true,
-    "tooltip-format": "重启"
+    "tooltip-format": "System reboot, don't ask!"
   },
   "custom/power": {
     "format": "<span color='#FF4040'>  </span>",
     "on-click": "systemctl poweroff",
     "tooltip": true,
-    "tooltip-format": "关机"
+    "tooltip-format": "System shutdown, don't ask!"
   },
   "network": {
     "format-wifi": "<span color='#00FFFF'> 󰤨 </span>{essid} ",
@@ -83,19 +83,19 @@
     "on-click-right": "pavucontrol -t 3",
     "on-click": "pactl -- set-sink-mute 0 toggle",
     "tooltip": true,
-    "tooltip-format": "当前系统声音: {volume}%"
+    "tooltip-format": "System volume: {volume}%"
   },
   "custom/temperature": {
     "exec": "sensors | awk '/^Tctl:/ {print int($2)}'",
     "format": "<span color='#FFA500'> </span>{}°C ",
     "interval": 5,
     "tooltip": true,
-    "tooltip-format": "当前 CPU 温度: {}°C"
+    "tooltip-format": " CPU temp: {}°C"
   },
   "memory": {
     "format": "<span color='#8A2BE2'>  </span>{used:0.1f}G",
     "tooltip": true,
-    "tooltip-format": "当前内存占比: {used:0.2f}G/{total:0.2f}G"
+    "tooltip-format": "Memory usage: {used:0.2f}G/{total:0.2f}G"
   },
   "cpu": {
     "format": "<span color='#FF9F0A'>  </span>{usage}% ",
@@ -103,9 +103,22 @@
   },
   "clock": {
     "interval": 1,
-    "format": "<span color='#BF00FF'>  </span>{:%H:%M} ",
+    "format": "<span color='#BF00FF'>  </span>{:%H:%M - %d/%m/%Y} ",
+    "calendar": {
+        "mode"          : "month",
+        "weeks-pos"     : "right",
+        "on-scroll"     : 1,
+        "on-click-right": "mode",
+        "format": {
+          "months":     "<span color='#ffead3'><b>{}</b></span>",
+          "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+          "today":      "<span color='#ff6699'><b><u>{}</u></b></span>",
+        }
+    },
     "tooltip": true,
-    "tooltip-format": "{:L%Y 年 %m 月 %d 日, %A}"
+    "tooltip-format": "{calendar}"
   },
   "tray": {
     "icon-size": 17,

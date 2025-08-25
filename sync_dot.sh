@@ -10,6 +10,7 @@ folders=(
     "qtile"
     "rofi"
     "hypr"
+    "waybar"
     "fish"
 )
 
