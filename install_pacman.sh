@@ -17,4 +17,12 @@ pacman -S \
        btop\
        bat\
        xclip\
-       maim
+       maim\
+       otf-font-awesome\
+       hyprland\
+       hyprpaper\
+       xdg-desktop-portal-hyprland\
+       waybar\
+       swaync\
+       hyprlock\
+       grim
