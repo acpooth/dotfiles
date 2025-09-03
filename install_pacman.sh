@@ -19,6 +19,7 @@ pacman -S \
        xclip\
        maim\
        otf-font-awesome\
+       ttf-noto-nerd\
        hyprland\
        hyprpaper\
        xdg-desktop-portal-hyprland\
