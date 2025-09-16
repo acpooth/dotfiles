@@ -1,5 +1,5 @@
 configuration {
-	modes: "windowcd,drun,filebrowser,ssh";
+	modes: "window,drun,filebrowser,ssh";
 	font: "sans 10";
 /*	location: 0;*/
 /*	yoffset: 0;*/
