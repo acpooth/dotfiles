@@ -46,11 +46,20 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dropbox/Org/")
+(setq org-directory "~/Sync/Emacs/org/")
 
 ;; org-roam
-(setq org-roam-directory (file-truename "~/Dropbox/org-roam"))
+(setq org-roam-directory (file-truename "~/Sync/Emacs/org-roam"))
 (org-roam-db-autosync-mode)
+ 
+;; Paths antiuguos en dropbox
+;; ~/Dropbox/Org
+;; ~/Dropbox/org-roam
+ 
+ ;; Whenever you reconfigure a package, make sure to wrap your config in an
+ ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
+
+
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an

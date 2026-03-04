@@ -18,7 +18,7 @@
 
 ;;(package! jupyter)
 
-(unpin! org-roam)
+;; (unpin! org-roam) ;; ya no es necesario
 (package! org-roam-ui)
 
 ;; To install a package directly from a remote git repo, you must specify a
