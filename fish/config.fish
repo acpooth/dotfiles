@@ -6,8 +6,8 @@
 ### Alias
 alias c='bat --wrap never'
 alias lspy='ls *.py'
-alias emacs= '/home/acph/.config/emacs/bin/doom run'
-alias doom='/home/acph/.config/emacs/bin/doom'
+alias emacs=$HOME'/.config/emacs/bin/doom run'
+alias doom=$HOME'/.config/emacs/bin/doom'
 
 ### Abbreviations
 abbr -a gdf git diff
