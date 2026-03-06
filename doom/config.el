@@ -47,9 +47,10 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Sync/Emacs/org/")
+(setq org-log-done 'time)
 
 ;; org-roam
-(setq org-roam-directory (file-truename "~/Sync/Emacs/org-roam"))
+(setq org-roam-directory (file-truename "~/Sync/Emacs/org/roam"))
 (org-roam-db-autosync-mode)
  
 ;; Paths antiuguos en dropbox
