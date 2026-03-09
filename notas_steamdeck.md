@@ -8,3 +8,6 @@
 En este caso, lo instalé con `conda`.
 
 > Funciona bien :P y es compatible con orgmode
+
+# Entorno gráfico
+A veces se congela
