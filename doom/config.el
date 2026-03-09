@@ -44,12 +44,55 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+
+;;;;;;;;;
+;; org ;;
+;;;;;;;;;
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Sync/Emacs/org/")
 (setq org-log-done 'time)
 
-;; org-roam
+(setq org-capture-templates
+      '(("t" "Todo" entry
+         (file+headline "~/Sync/Emacs/org/todo.org" "Inbox")
+         "* TODO %^{Task}\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?\n")
+
+       ("i" "Idea" entry
+         (file+headline "~/Sync/Emacs/org/ideas.org" "Ideas")
+         "* IDEA %^{title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?\n")
+
+       ("l" "Log" entry
+         (file+headline "~/Sync/Emacs/org/log.org" "Log")
+         "* %U - %^{log-text} :TAGS:%(org-capture-log-tags)")
+       )
+      )
+
+
+(defun org-capture-log-tags ()
+  "Get tags from existing bookmarks and prompt for tags with completion. from: https://github.com/joshuablais/dotfiles/blob/master/doom/.config/doom/config.el"
+  (save-window-excursion
+    (let ((tags-list '()))
+      ;; Collect existing tags
+      (with-current-buffer (find-file-noselect "~/Sync/Emacs/org/log.org")
+        (save-excursion
+          (goto-char (point-min))
+          (while (re-search-forward ":TAGS:\\s-*\\(.+\\)$" nil t)
+            (let ((tag-string (match-string 1)))
+              (dolist (tag (split-string tag-string "[:]" t "[[:space:]]"))
+                (push (string-trim tag) tags-list))))))
+      ;; Remove duplicates and sort
+      (setq tags-list (sort (delete-dups tags-list) 'string<))
+      ;; Prompt user with completion
+      (let ((selected-tags (completing-read-multiple "Tags (comma-separated): " tags-list)))
+        ;; Return as a comma-separated string
+        (concat (mapconcat 'identity selected-tags ":") ":")))))
+
+;;;;;;;;;;;;;;
+;; org-roam ;;
+;;;;;;;;;;;;;;
+
 (setq org-roam-directory (file-truename "~/Sync/Emacs/org/roam"))
 (org-roam-db-autosync-mode)
  
@@ -110,3 +153,7 @@
                 )
          )
  )
+
+
+
+
