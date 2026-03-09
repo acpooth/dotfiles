@@ -11,3 +11,5 @@ En este caso, lo instalé con `conda`.
 
 # Entorno gráfico
 A veces se congela
+
+En ocasiones se bloquea el teclado virtual
