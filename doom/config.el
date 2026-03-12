@@ -54,6 +54,21 @@
 (setq org-directory "~/Sync/Emacs/org/")
 (setq org-log-done 'time)
 
+
+
+;;;;;;;;;;;;;;
+;; org-roam ;;
+;;;;;;;;;;;;;;
+
+(setq org-roam-directory (file-truename "~/Sync/Emacs/org/roam"))
+(org-roam-db-autosync-mode)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Org mode capture templates ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(after! org
 (setq org-capture-templates
       '(("t" "Todo" entry
          (file+headline "~/Sync/Emacs/org/todo.org" "Inbox")
@@ -68,7 +83,7 @@
          "* %U - %^{log-text} :TAGS:%(org-capture-log-tags)")
        )
       )
-
+)
 
 (defun org-capture-log-tags ()
   "Get tags from existing bookmarks and prompt for tags with completion. from: https://github.com/joshuablais/dotfiles/blob/master/doom/.config/doom/config.el"
@@ -89,22 +104,52 @@
         ;; Return as a comma-separated string
         (concat (mapconcat 'identity selected-tags ":") ":")))))
 
-;;;;;;;;;;;;;;
-;; org-roam ;;
-;;;;;;;;;;;;;;
 
-(setq org-roam-directory (file-truename "~/Sync/Emacs/org/roam"))
-(org-roam-db-autosync-mode)
- 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; org-roam capture templates ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq org-roam-capture-templates
+      '(
+        ("d" "default" plain "%?"
+          :if-new (file+head "${slug}-%<%Y%m%d%H%M%S>.org"
+                             "#+title: ${title}\n")
+          :unnarrowed t
+          )
+
+        ("p" "Project" plain "* Objective\n\n%?\n\n* Ideas\n\n** IDEA \n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n** Created %U\n\n"
+         :if-new (file+head "projects/${slug}-%<%Y%m%d%H%M%S>.org"
+                            "#+title: ${title}\n#+filetags: :Project:")
+         :unnarrowed t
+         )
+
+        ("r" "Presentation" plain "* %? \n\n\n\n----------\nSLIDES----------\n\n* First slide"
+         :if-new (file+head "presentations/${slug}-%<%Y%m%d%H%M%S>.org"
+                            "#+title: ${title}\n#+filetags: :Presentation:")
+         :unnarrowed t
+         )
+        )
+      )
+
+(use-package! websocket
+  :after org-roam)
+
+(use-package! org-roam-ui
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+
+
+
 ;; Paths antiuguos en dropbox
 ;; ~/Dropbox/Org
 ;; ~/Dropbox/org-roam
  
  ;; Whenever you reconfigure a package, make sure to wrap your config in an
  ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
-
-
-
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
