@@ -15,9 +15,13 @@
 
 (setq ein:output-area-inlined-images t)
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
-;; - `doom-font' -- the primary font to use
+(setq org-babel-python-command "ipython")
+(setq python-shell-interpreter "ipython")
+;; this help a lot, it looks that fix some problem with corfu
+(setq python-shell-interpreter-args "--simple-prompt")
+
+
+;;;; - `doom-font' -- the primary font to use
 ;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
 ;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
 ;;   presentations or streaming.
@@ -39,6 +43,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
+(setq doom-font 'FiraCode)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
