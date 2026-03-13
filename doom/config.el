@@ -152,14 +152,20 @@
 ;; org-super-agenda  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
 
-(after! org-agenda
+;; (after! org-agenda
+;;    (setq org-super-agenda-groups
+;;         '((:auto-category t))
+;;         )
+
+;;   (org-super-agenda-mode +1)
+;; )
+
+(use-package! org-super-agenda
+  :after org-agenda
+  :config
   (setq org-super-agenda-groups
-        '(
-          (:auto-category t)
-          )
-        )
-  (org-super-agenda-mode)
-)
+        '((:auto-category t)))
+  (org-super-agenda-mode +1))
 
 
  ;; Whenever you reconfigure a package, make sure to wrap your config in an
