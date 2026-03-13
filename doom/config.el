@@ -226,4 +226,12 @@
 ;; Calendar ;;
 ;;;;;;;;;;;;;;
 
+;; Dummy variables before loading
+;;
+
+(setq org-gcal-client-id "pending"
+      org-gcal-client-secret "pending")
+
+
 (load! "~/Sync/Emacs/cal.el")
+
