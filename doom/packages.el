@@ -9,6 +9,8 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
+(package! org-super-agenda)
+
 (package! obsidian)
 (package! org-reveal)
 (package! ox-reveal)

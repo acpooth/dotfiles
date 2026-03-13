@@ -42,8 +42,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-
+(setq doom-theme 'doom-bluloco-dark)
+(setq fancy-splash-image "~/Sync/Emacs/dragon_mark.png")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -148,11 +148,20 @@
         org-roam-ui-open-on-start t))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;
+;; org-super-agenda  ;;
+;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Paths antiuguos en dropbox
-;; ~/Dropbox/Org
-;; ~/Dropbox/org-roam
- 
+(after! org-agenda
+  (setq org-super-agenda-groups
+        '(
+          (:auto-category t)
+          )
+        )
+  (org-super-agenda-mode)
+)
+
+
  ;; Whenever you reconfigure a package, make sure to wrap your config in an
  ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 
