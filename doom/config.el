@@ -79,6 +79,10 @@
          (file+headline "~/Sync/Emacs/org/todo.org" "Inbox")
          "* TODO %^{Task}\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?\n")
 
+      ("c" "Calendar" entry
+       (file "~/Sync/Emacs/org/calendar.org")
+        "* %^{Task}\n%?")
+
        ("i" "Idea" entry
          (file+headline "~/Sync/Emacs/org/ideas.org" "Ideas")
          "* IDEA %^{title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?\n")
@@ -229,9 +233,16 @@
 ;; Dummy variables before loading
 ;;
 
-(setq org-gcal-client-id "pending"
-      org-gcal-client-secret "pending")
+
+(after! plstore
+  (add-to-list 'plstore-encrypt-to "GPG-key-id"))
+
+(setq epg-pinentry-mode 'loopback)
+
+(setq plstore-cache-passphrase-for-symmetric-encryption t)
+
+;; (setq org-gcal-client-id "pending"
+;;       org-gcal-client-secret "pending")
 
 
 (load! "~/Sync/Emacs/cal.el")
-
