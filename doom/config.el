@@ -31,8 +31,18 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
+
+;;;;;;;;;;;
+;; Fonts ;;
+;;;;;;;;;;;
+
 (setq doom-font (font-spec :family "Fira Code" :size 16 :weight 'semi-light)
-)
+       )
+
+;; (setq doom-font (font-spec :family "Fira Code" :size 16)
+;;       doom-variable-pitch-font (font-spec :family "Fira Code" :size 16)
+;;       doom-symbol-font (font-spec :family "Fira Code"))
+
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -42,7 +52,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-bluloco-dark)
+;; (setq doom-theme 'doom-bluloco-dark)
+(setq doom-theme 'doom-vibrant)
 (setq fancy-splash-image "~/Sync/Emacs/dragon_mark.png")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -60,6 +71,16 @@
 (setq org-log-done 'time)
 
 
+;;(setq org-modern-fold-stars '(("▶" . "▼") ("▷" . "▽") ("⯈" . "⯆") ("▹" . "▿") ("▸" . "▾")))
+
+(setq org-modern-fold-stars '(("◇" . "◈")
+                              ("○" . "◉")
+                              ("◌" . "◦")                              
+                              ("▹" . "▸")
+                              ( "▫" . "▪")
+                             ))
+;("◑" . "◐")
+;("▣" . "▢")
 
 ;;;;;;;;;;;;;;
 ;; org-roam ;;
@@ -156,14 +177,6 @@
 ;; org-super-agenda  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (after! org-agenda
-;;    (setq org-super-agenda-groups
-;;         '((:auto-category t))
-;;         )
-
-;;   (org-super-agenda-mode +1)
-;; )
-
 (use-package! org-super-agenda
   :after org-agenda
   :config
@@ -231,8 +244,6 @@
 ;;;;;;;;;;;;;;
 
 ;; Dummy variables before loading
-;;
-
 
 (after! plstore
   (add-to-list 'plstore-encrypt-to "GPG-key-id"))
@@ -240,9 +251,8 @@
 (setq epg-pinentry-mode 'loopback)
 
 (setq plstore-cache-passphrase-for-symmetric-encryption t)
-
 ;; (setq org-gcal-client-id "pending"
 ;;       org-gcal-client-secret "pending")
-
-
 (load! "~/Sync/Emacs/cal.el")
+
+

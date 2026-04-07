@@ -163,7 +163,7 @@
         +roam
         +dragndrop
         +pandoc
-        +present
+        ;;+present
         +journal
         +pretty
         )

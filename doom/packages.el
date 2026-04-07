@@ -9,17 +9,18 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
+;;Package for better organized agenda
 (package! org-super-agenda)
+;;(package! org-superstar)
 
-(package! obsidian)
-(package! org-reveal)
-(package! ox-reveal)
+;;(package! obsidian)
+;;(package! org-reveal)
+;;(package! ox-reveal)
 (package! csv)
 (package! csv-mode)
 (package! ellama)
 
 ;;(package! jupyter)
-
 ;; (unpin! org-roam) ;; ya no es necesario
 (package! org-roam-ui)
 
