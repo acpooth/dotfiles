@@ -15,7 +15,7 @@
 
 (setq ein:output-area-inlined-images t)
 
-(setq org-babel-python-command "ipython")
+(setq org-babel-python-command "python")
 (setq python-shell-interpreter "ipython")
 ;; this help a lot, it looks that fix some problem with corfu
 (setq python-shell-interpreter-args "--simple-prompt")
